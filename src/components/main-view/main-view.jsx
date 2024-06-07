@@ -1,66 +1,55 @@
 import { useState } from "react";
-import { BookCard } from "../book-card/book-card";
-import { BookView } from "../book-view/book-view";
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
-    const [books, setBooks] = useState([
+    const [movies, setMovies] = useState([
         {
           id: 1,
-          title: "Eloquent JavaScript",
-          image:
-            "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
-          author: "Marijn Haverbeke"
+          title: "Jaws",
+          description: "A giant great white shark arrives on the shores of a New England beach resort and wreaks havoc with bloody attacks on swimmers until a part-time sheriff teams up with a marine biologist and an old seafarer to hunt the monster down.",
+          genre: "Horror",
+          image: "https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg",
+          director: "Steven Spielberg"
         },
         {
           id: 2,
-          title: "Mastering JavaScript Functional Programming",
-          image:
-            "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-          author: "Federico Kereki"
+          title: "Fight Club",
+          description: "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
+          genre: "Drama",
+          image: "https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",
+          director: "David Fincher"
         },
         {
           id: 3,
-          title: "JavaScript: The Good Parts",
-          image:
-            "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
-          author: "Douglas Crockford"
+          title: "Lion",
+          description: "A five-year-old Indian boy is adopted by an Australian couple after getting lost hundreds of kilometers from home. 25 years later, he sets out to find his lost family.",
+          genre: "Drama",
+          image: "https://m.media-amazon.com/images/M/MV5BMjA3NjkzNjg2MF5BMl5BanBnXkFtZTgwMDkyMzgzMDI@._V1_FMjpg_UX1000_.jpg",
+          director: "Garth Davis"
         },
-        {
-          id: 4,
-          title: "JavaScript: The Definitive Guide",
-          image:
-            "https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-          author: "David Flanagan"
-        },
-        {
-          id: 5,
-          title: "The Road to React",
-          image:
-            "https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg",
-          author: "Robin Wieruch"
-        }
-      ]);
+    ]);
 
-  const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  if (selectedBook) {
+  if (selectedMovie) {
     return (
-      <BookView book={selectedBook} onBackClick={() => setSelectedBook(null)} />
+      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
     );
   }
 
-  if (books.length === 0) {
+  if (movies.length === 0) {
     return <div>The list is empty!</div>;
   } 
   
   return (
     <div>
-      {books.map((book) => (
-        <BookCard
-          key={book.id}
-          book={book}
-          onBookClick={(newSelectedBook) => {
-            setSelectedBook(newSelectedBook);
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
         }}
         />
       ))}
