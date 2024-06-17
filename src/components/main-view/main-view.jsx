@@ -3,7 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
-    const [movies, setMovies] = useState([
+/*    const [movies, setMovies] = useState([
         {
           id: 1,
           title: "Jaws",
@@ -28,9 +28,22 @@ export const MainView = () => {
           image: "https://m.media-amazon.com/images/M/MV5BMjA3NjkzNjg2MF5BMl5BanBnXkFtZTgwMDkyMzgzMDI@._V1_FMjpg_UX1000_.jpg",
           director: "Garth Davis"
         },
-    ]);
+  ]);
+*/
+  const [movies, setMovies] = useState([]); // empty array
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null); // To determine whether to render a specific part of the UI
+
+  useEffect(() => {
+    fetch("https://myflix-movies80-1cc69a49ddd0.herokuapp.com/")
+        .then((response) => response.json())
+        .then(movies => {
+            setMovies(movies)
+        })
+        .catch(e => console.log(e))
+
+  }, []);
+
 
   if (selectedMovie) {
     return (
