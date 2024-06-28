@@ -35,7 +35,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null); // To determine whether to render a specific part of the UI
 
   useEffect(() => {
-    fetch("https://myflix-movies80-1cc69a49ddd0.herokuapp.com/")
+    fetch("https://myflix-movies80-1cc69a49ddd0.herokuapp.com/movies")
         .then((response) => response.json())
         .then(movies => {
             setMovies(movies)
